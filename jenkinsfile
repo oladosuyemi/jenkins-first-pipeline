@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Adeyemi - Build Docker Image') {
+            steps {
+                sh 'docker build -t oladosuyemi/adeyemi.py .'
+            }
+        }
+
+        stage('Adeyemi - Login to Dockerhub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', passwordVariable: 'docker', usernameVariable: 'oladosuyemi')]) {
+                    sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+                }
+            }
+        }
+
+        stage('Adeyemi - Push image to Dockerhub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', passwordVariable: 'docker', usernameVariable: 'oladosuyemi')]) {
+                    sh 'docker push docker push oladosuyemi/jenkins_2_pipeline:oladosuyemi/adeyemi.py'
+                }
+            }
+        }
+    }
+}
+
