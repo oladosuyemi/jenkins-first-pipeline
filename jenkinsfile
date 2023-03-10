@@ -1,15 +1,9 @@
 pipeline {
     agent any
-
     stages {
-        stage('clone repository') {
-            steps {
-                url:'https://github.com/oladosuyemi/jenkins-first-pipeline.git'
-            }
-        }
         stage('Adeyemi - Build Docker Image') {
             steps {
-                 checkout scm
+               
                  sh 'docker build -t oladosuyemi/adeyemi.py .'
             }
         }
