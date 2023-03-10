@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Adeyemi - Build Docker Image') {
+        stage('Adeyemi - Building Docker Image') {
             steps {
                
                  sh 'docker build -t oladosuyemi/dockerfile dockerfile'
