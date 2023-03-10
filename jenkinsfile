@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Adeyemi - Build Docker Image') {
             steps {
-                sh 'docker build -t oladosuyemi/adeyemi.py .'
+                 checkout scm
+                 sh 'docker build -t oladosuyemi/adeyemi.py .'
             }
         }
 
