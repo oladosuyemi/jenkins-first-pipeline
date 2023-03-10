@@ -4,7 +4,7 @@ pipeline {
         stage('Adeyemi - Build Docker Image') {
             steps {
                
-                 sh 'docker build -t oladosuyemi/dockerfile .'
+                 sh 'docker build -t oladosuyemi/dockerfile dockerfile'
             }
         }
 
@@ -19,7 +19,7 @@ pipeline {
         stage('Adeyemi - Push image to Dockerhub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', passwordVariable: 'docker', usernameVariable: 'oladosuyemi')]) {
-                    sh 'docker push docker push oladosuyemi/jenkins_2_pipeline:oladosuyemi/dockerfile.py'
+                    sh 'docker push docker push oladosuyemi/jenkins_2_pipeline:oladosuyemi/dockerfile'
                 }
             }
         }
